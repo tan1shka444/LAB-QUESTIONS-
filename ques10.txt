@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main() 
+    int arr[] = {1, 4, 20, 3, 10, 5};
+    int n = 6, sum = 33;
+    int curr_sum, i, j;
+
+    for (i = 0; i < n; i++) {
+        curr_sum = arr[i];
+        for (j = i + 1; j <= n; j++) {
+            if (curr_sum == sum) {
+                printf("Subarray: ");
+                for (int k = i; k < j; k++)
+                    printf("%d ", arr[k]);
+                return 0;
+            }
+            if (curr_sum > sum || j == n)
+                break;
+            curr_sum += arr[j];
+        }
+    }
+    printf("No subarray found");
+    return 0;
+}
