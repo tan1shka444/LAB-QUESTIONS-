@@ -20,4 +20,5 @@ int main()
     }
     printf("No subarray found");
     return 0;
+
 }
