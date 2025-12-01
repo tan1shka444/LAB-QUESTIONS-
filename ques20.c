@@ -1,31 +1,29 @@
 #include <stdio.h>
+
 int main() {
-    int n, i, j;
-    printf("Enter the number of elements: ");
+    int n;
+    printf("Enter n: ");
     scanf("%d", &n);
 
-    int arr[n], result[n];
+    int arr[n], left[n], right[n], result[n];
 
-    printf("Enter %d elements: ", n);
-    for (i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
+    printf("Enter array: ");
+    for(int i=0; i<n; i++) scanf("%d", &arr[i]);
 
-    for (i = 0; i < n; i++) {
-        int product = 1;
-        for (j = 0; j < n; j++) {
-            if (i != j) {
-                product *= arr[j];
-            }
-        }
-        result[i] = product;
-    }
+    left[0] = 1;
+    for(int i=1; i<n; i++)
+        left[i] = left[i-1] * arr[i-1];
 
-    printf("Product of all other elements for each position:\n");
-    for (i = 0; i < n; i++) {
+    right[n-1] = 1;
+    for(int i=n-2; i>=0; i--)
+        right[i] = right[i+1] * arr[i+1];
+
+    for(int i=0; i<n; i++)
+        result[i] = left[i] * right[i];
+
+    printf("Output: ");
+    for(int i=0; i<n; i++)
         printf("%d ", result[i]);
-    }
 
-    printf("\n");
     return 0;
 }
