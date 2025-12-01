@@ -14,4 +14,5 @@ int main() {
 
     printf("Number of words: %d\n", count);
     return 0;
+
 }
